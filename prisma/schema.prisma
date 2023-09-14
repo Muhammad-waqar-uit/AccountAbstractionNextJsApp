@@ -42,3 +42,4 @@ model TransactionSignature {
   signerAddress String
   signature     String
 }
+

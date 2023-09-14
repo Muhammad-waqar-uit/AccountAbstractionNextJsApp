@@ -1,5 +1,6 @@
 export const WALLET_FACTORY_ADDRESS =
   "0xE38eE103c0B8C17660CA98249Fd108A4820e1F21";
+export const ERC20_ADDRESS = "0xd0B077908984Cd901945a17358475f3aC1dF6169";
 
 export const BUNDLER_RPC_URL = `https://api.stackup.sh/v1/node/${process.env.NEXT_PUBLIC_STACKUP_API_KEY}`;
 
@@ -127,6 +128,46 @@ export const WALLET_ABI = [
     name: "execute",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+] as const;
+
+export const ERC20ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
 ] as const;

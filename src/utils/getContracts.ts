@@ -6,6 +6,8 @@ import {
   WALLET_ABI,
   WALLET_FACTORY_ABI,
   WALLET_FACTORY_ADDRESS,
+  ERC20ABI,
+  ERC20_ADDRESS,
 } from "./constants";
 
 export const provider = new providers.JsonRpcProvider(BUNDLER_RPC_URL);
@@ -21,6 +23,8 @@ export const walletFactoryContract = new Contract(
   WALLET_FACTORY_ABI,
   provider
 );
+
+export const ERC20ABIContract = new Contract(ERC20_ADDRESS, ERC20ABI, provider);
 
 export const getWalletContract = (walletAddress: string) => {
   return new Contract(walletAddress, WALLET_ABI, provider);

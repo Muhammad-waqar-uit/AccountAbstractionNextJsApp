@@ -153,7 +153,14 @@ export default function TransactionsList({
           <p className="text-lg">You currently have no transactions.</p>
         </div>
       )}
+// Build op with the middleware stack.
+let userOp = await builder.buildOp(entryPoint, chainId);
 
+// Or get the latest built op. Will not use the middleware stack.
+let userOp = await builder.getOp();
+
+// Reset op back to default values when you're done.
+builder.resetOp();
       {walletTxns.length > 0 && (
         <div className="grid grid-cols-3 gap-4">
           {walletTxns.map((transaction) => (
@@ -185,7 +192,7 @@ export default function TransactionsList({
                   <Button
                     onClick={() =>
                       window.open(
-                        `https://mumbai.polygonscan.com0xb018b1558a7E2f8544e3eb7461fC23d8178DaaA1/tx/${transaction.txHash}`,
+                        `https://mumbai.polygonscan.com/tx/${transaction.txHash}`,
                         "_blank"
                       )
                     }
