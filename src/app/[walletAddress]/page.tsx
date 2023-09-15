@@ -134,6 +134,8 @@ export default function WalletPage({
         message: { raw: userOpHash as `0x${string}` },
       });
 
+      console.log(signature);
+      
       const response = await fetch("/api/create-erc20transaction", {
         method: "POST",
         body: JSON.stringify({
