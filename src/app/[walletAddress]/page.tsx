@@ -24,6 +24,7 @@ export default function WalletPage({
   const [tokenAmount, setTokenAmount] = useState<BigNumber>(BigNumber.from(0));
 
   const [loading, setLoading] = useState(false);
+  const [erc20loading, seterc20Loading] = useState(false);
 
   const fetchUserOp = async () => {
     try {
@@ -121,7 +122,7 @@ export default function WalletPage({
 
   const createERC20Transaction = async () => {
     try {
-      setLoading(true);
+      seterc20Loading(true);
       if (!userAddress) throw new Error("Could not get user address");
       if (!walletClient) throw new Error("Could not get wallet client");
 
@@ -156,7 +157,7 @@ export default function WalletPage({
     } catch (err) {
       if (err instanceof Error) window.alert(err.message);
       console.error(err);
-      setLoading(false);
+      seterc20Loading(false);
     }
   };
 
@@ -211,7 +212,7 @@ export default function WalletPage({
           }}
         />
 
-        <Button isLoading={loading} onClick={createERC20Transaction}>
+        <Button isLoading={erc20loading} onClick={createERC20Transaction}>
           Transfer ERC20
         </Button>
       </div>
